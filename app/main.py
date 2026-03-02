@@ -15,7 +15,7 @@ def main():
         letter = input('Podaj literę: ').upper()
         while (not letter.isalpha()):
             letter = input('Podałeś złą wartość. Powtórz: ').upper()
-        
+        print(puzzle)
 
 
 if __name__ == "__main__":
