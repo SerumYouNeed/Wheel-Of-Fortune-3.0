@@ -1,22 +1,24 @@
 from enum import Enum
-import puzzle
+from domain.puzzle import Puzzle
 
 def main():
 
     class GameState(Enum):
-        TERMINATED = 0
-        RUNNING = 1
+        RUNNING = "running"
+        WON = "won"
+        LOST = "lost"
 
     game_state = GameState.RUNNING
 
-    puzzle = puzzle.Puzzle('ALA MA KOTA')
+    puzzle = Puzzle('ALA MA KOTA')
 
-    while(game_state):
+    while(game_state == GameState.RUNNING):
+        print(puzzle.masked_puzzle)
         letter = input('Podaj literę: ').upper()
         while (not letter.isalpha()):
             letter = input('Podałeś złą wartość. Powtórz: ').upper()
-        print(puzzle)
-
+        if (puzzle.is_letter_in_puzzle(letter)):
+            puzzle.reveal(letter)
 
 if __name__ == "__main__":
     main()
