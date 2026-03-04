@@ -19,6 +19,7 @@ def main():
             letter = input('Podałeś złą wartość. Powtórz: ').upper()
         if (puzzle.is_letter_in_puzzle(letter)):
             puzzle.reveal(letter)
+            
 
 if __name__ == "__main__":
     main()

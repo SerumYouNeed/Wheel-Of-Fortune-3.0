@@ -26,6 +26,12 @@ class Puzzle():
     def mask_puzzle(self):
         return ''.join(self.mask_letter(letter) for letter in self._puzzle)
 
+    def count_letter(self, letter: str) -> int:
+        counter = 0
+        for char in self._puzzle:
+            if char == letter:
+                counter += 1
+        return counter
 
     def reveal(self, letter: str) -> bool:
         if letter not in self._puzzle:
