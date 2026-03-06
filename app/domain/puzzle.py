@@ -4,6 +4,7 @@ class Puzzle():
         self._puzzle = puzzle
         self._masked_puzzle = self.mask_puzzle()
         self._puzzle_after_letter_guess =  None
+        self._letters_guessed_before = set()
 
     @property
     def puzzle(self):
@@ -25,13 +26,6 @@ class Puzzle():
 
     def mask_puzzle(self):
         return ''.join(self.mask_letter(letter) for letter in self._puzzle)
-
-    def count_letter(self, letter: str) -> int:
-        counter = 0
-        for char in self._puzzle:
-            if char == letter:
-                counter += 1
-        return counter
 
     def reveal(self, letter: str) -> bool:
         if letter not in self._puzzle:
