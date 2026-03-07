@@ -5,7 +5,6 @@ class PuzzleService():
     def __init__(self, puzzle: Puzzle):
         self._puzzle = puzzle 
 
-
     def count_guessed_letter(self, letter: str) -> int:
         counter = 0
         for char in self._puzzle._puzzle:
@@ -19,4 +18,5 @@ class PuzzleService():
     def check_letter_in_guessed(self, letter: str) -> bool:
         return True if letter in self._puzzle._letters_guessed_before else False
 
+    def 
 
