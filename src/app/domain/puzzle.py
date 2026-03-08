@@ -21,9 +21,6 @@ class Puzzle():
     def mask_letter(self, letter):
         return '_' if letter.isalpha() else letter
 
-    def is_letter_in_puzzle(self, letter: str):
-        return letter in self._puzzle
-
     def mask_puzzle(self):
         return ''.join(self.mask_letter(letter) for letter in self._puzzle)
 

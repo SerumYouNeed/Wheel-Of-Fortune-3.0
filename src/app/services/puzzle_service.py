@@ -18,5 +18,6 @@ class PuzzleService():
     def check_letter_in_guessed(self, letter: str) -> bool:
         return True if letter in self._puzzle._letters_guessed_before else False
 
-    def 
+    def is_letter_in_puzzle(self, letter: str):
+        return letter in self._puzzle
 
