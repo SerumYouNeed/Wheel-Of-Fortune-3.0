@@ -1,9 +1,9 @@
-class Puzzle():
+class Puzzle:
 
     def __init__(self, puzzle: str):
         self._puzzle = puzzle
         self._masked_puzzle = self.mask_puzzle()
-        self._puzzle_after_letter_guess =  None
+        self._puzzle_after_letter_guess = None
         self._letters_guessed_before = set()
 
     @property
@@ -19,9 +19,7 @@ class Puzzle():
         return self._puzzle_after_letter_guess
 
     def mask_letter(self, letter):
-        return '_' if letter.isalpha() else letter
+        return "_" if letter.isalpha() else letter
 
     def mask_puzzle(self):
-        return ''.join(self.mask_letter(letter) for letter in self._puzzle)
-
-   
+        return "".join(self.mask_letter(letter) for letter in self._puzzle)

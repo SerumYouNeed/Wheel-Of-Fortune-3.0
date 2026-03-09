@@ -1,28 +1,17 @@
-from enum import Enum
 from app.domain.puzzle import Puzzle
 from app.services.puzzle_service import PuzzleService
+from app.services.game_service import GameService
+from app.domain.game_state import GameState
+
 
 def main():
 
-    class GameState(Enum):
-        RUNNING = "running"
-        WON = "won"
-        LOST = "lost"
-
-    game_state = GameState.RUNNING
-
-    puzzle = Puzzle('ALA MA KOTA')
+    puzzle = Puzzle("ALA MA KOTA")
     puzzle_service = PuzzleService(puzzle)
+    game_state = GameState.RUNNING
+    service = GameService(puzzle, puzzle_service, game_state)
+    service.start_game()
 
-    while(game_state == GameState.RUNNING):
-        print(puzzle.masked_puzzle)
-        letter = input('Podaj literę: ').upper()
-        while (not letter.isalpha() or puzzle_service.check_letter_in_guessed(letter)):
-            letter = input('Podałeś złą wartość. Powtórz: ').upper()
-        if (puzzle_service.is_letter_in_puzzle(letter)):
-            puzzle_service.reveal(letter)
-            guessed_in_turn = puzzle_service.count_guessed_letter(letter)
-            print(f'Well done. You found {guessed_in_turn} letter(s) in the puzzle.')
 
 if __name__ == "__main__":
     main()
