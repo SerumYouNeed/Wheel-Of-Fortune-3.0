@@ -24,17 +24,4 @@ class Puzzle():
     def mask_puzzle(self):
         return ''.join(self.mask_letter(letter) for letter in self._puzzle)
 
-    def reveal(self, letter: str) -> bool:
-        if letter not in self._puzzle:
-            return False
-
-        new_mask = []
-
-        for i, char in enumerate(self._puzzle):
-            if char == letter:
-                new_mask.append(letter)
-            else:
-                new_mask.append(self._masked_puzzle[i])
-
-        self._masked_puzzle = ''.join(new_mask)
-        return True
+   

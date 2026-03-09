@@ -19,5 +19,19 @@ class PuzzleService():
         return True if letter in self._puzzle._letters_guessed_before else False
 
     def is_letter_in_puzzle(self, letter: str):
-        return letter in self._puzzle
+        return letter in self._puzzle._puzzle
 
+    def reveal(self, letter: str) -> bool:
+        if letter not in self._puzzle:
+            return False
+
+        new_mask = []
+
+        for i, char in enumerate(self._puzzle):
+            if char == letter:
+                new_mask.append(letter)
+            else:
+                new_mask.append(self._masked_puzzle[i])
+
+        self._masked_puzzle = ''.join(new_mask)
+        return True

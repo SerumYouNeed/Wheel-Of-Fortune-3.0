@@ -19,8 +19,8 @@ def main():
         letter = input('Podaj literę: ').upper()
         while (not letter.isalpha() or puzzle_service.check_letter_in_guessed(letter)):
             letter = input('Podałeś złą wartość. Powtórz: ').upper()
-        if (puzzle.is_letter_in_puzzle(letter)):
-            puzzle.reveal(letter)
+        if (puzzle_service.is_letter_in_puzzle(letter)):
+            puzzle_service.reveal(letter)
             guessed_in_turn = puzzle_service.count_guessed_letter(letter)
             print(f'Well done. You found {guessed_in_turn} letter(s) in the puzzle.')
 
