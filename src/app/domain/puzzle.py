@@ -23,3 +23,6 @@ class Puzzle:
 
     def mask_puzzle(self):
         return "".join(self.mask_letter(letter) for letter in self._puzzle)
+
+    def check_answer(self, answer: str) -> bool:
+        return self._puzzle == answer.upper()

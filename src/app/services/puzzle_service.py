@@ -1,6 +1,5 @@
 from app.domain.puzzle import Puzzle
 
-
 class PuzzleService:
 
     def __init__(self, puzzle: Puzzle):
