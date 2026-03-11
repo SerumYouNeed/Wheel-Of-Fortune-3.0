@@ -4,8 +4,7 @@ class Puzzle:
         self._puzzle = puzzle
         self._masked_puzzle = self.mask_puzzle()
         self._puzzle_after_letter_guess = None
-        self._letters_guessed_before = set()
-
+ 
     @property
     def puzzle(self):
         return self._puzzle
