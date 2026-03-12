@@ -1,27 +1,23 @@
 class Puzzle:
 
-    def __init__(self, puzzle: str):
-        self._puzzle = puzzle
-        self._masked_puzzle = self.mask_puzzle()
-        self._puzzle_after_letter_guess = None
- 
-    @property
-    def puzzle(self):
-        return self._puzzle
+    def __init__(self, solution: str):
+        self.solution = solution.upper()
+        self.guessed_letters = set()
 
-    @property
-    def masked_puzzle(self):
-        return self._masked_puzzle
+    def guess_letter(self, letter: str):
+        self.guessed_letters.add(letter.upper())
 
-    @property
-    def puzzle_after_letter_guess(self):
-        return self._puzzle_after_letter_guess
+    def has_letter(self, letter: str) -> bool:
+        return letter.upper() in self.solution
 
-    def mask_letter(self, letter):
-        return "_" if letter.isalpha() else letter
+    def count_letter(self, letter: str) -> int:
+        return self.solution.count(letter.upper())
 
-    def mask_puzzle(self):
-        return "".join(self.mask_letter(letter) for letter in self._puzzle)
+    def masked(self) -> str:
+        return " ".join(
+            letter if letter in self.guessed_letters else "_"
+            for letter in self.solution
+        )
 
-    def check_answer(self, answer: str) -> bool:
-        return self._puzzle == answer.upper()
+    def is_solved(self) -> bool:
+        return all(letter in self.guessed_letters for letter in self.solution)

@@ -14,8 +14,8 @@ class GameService:
         choice = input("What do you want to do? 1: pick letter, 2: solve the puzzle.")
         match choice:
             case "1":
-                return "pick_letter"    
-            case "2":   
+                return "pick_letter"
+            case "2":
                 return "solve_puzzle"
             case _:
                 print("Wrong choice. Try again.")

@@ -10,4 +10,3 @@ class GameSession:
 
     def check_letter_in_guessed(self, letter: str) -> bool:
         return True if letter in self._letters_guessed else False
-
