@@ -1,5 +1,6 @@
 from app.domain.player import Player
 
+
 class PlayerService:
     """Service responsible for player management, including registration, login, and guest play."""
 

@@ -1,4 +1,13 @@
-import sqlite3
+from sqlalchemy import create_engine, text
+
+engine = create_engine("sqlite+pysqlite:///data/game.db", echo=True, future=True)
+
 
 def get_connection():
-    return sqlite3.connect("sqlite:///data/game.db")
+    return engine.connect()
+
+
+def execute_query(query: str, params: dict = None):
+    with get_connection() as conn:
+        conn.execute(text(query), params or {})
+        conn.commit()
