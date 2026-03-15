@@ -8,3 +8,4 @@ class Player:
         self.name = name.upper()
         self.score = 0
         self.guest = guest
+        self.password_hash = None

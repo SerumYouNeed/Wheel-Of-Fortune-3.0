@@ -1,16 +1,14 @@
 from app.domain.puzzle import Puzzle
 from app.services.puzzle_service import PuzzleService
-from app.services.game_service import GameService
 from app.domain.game_state import GameState
+from app.repository.player_repository import PlayerRepository
 
 
 def main():
 
     puzzle = Puzzle("ALA MA KOTA")
-    puzzle_service = PuzzleService(puzzle)
-    game_state = GameState.RUNNING
-    service = GameService(puzzle, puzzle_service, game_state)
-    service.start_game()
+    player_repository = PlayerRepository()
+    player_repository.create_players_table()
 
 
 if __name__ == "__main__":
