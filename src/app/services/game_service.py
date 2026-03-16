@@ -10,6 +10,7 @@ class GameService:
         self._puzzle_service = service
         self._game_state = game_state
 
+    # to jest do skasowania
     def choose_move(self):
         choice = input("What do you want to do? 1: pick letter, 2: solve the puzzle.")
         match choice:
