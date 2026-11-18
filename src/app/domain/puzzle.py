@@ -18,10 +18,10 @@ class Puzzle:
     def masked(self) -> str:
         """Return puzzle with unguessed letters replaced by '_'."""
         return " ".join(
-            letter if letter in self.guessed_letters else "_"
-            for letter in self.solution
+        ch if (not ch.isalpha() or ch in self.guessed_letters) else "_"
+        for ch in self.solution
         )
 
     def is_solved(self) -> bool:
         """Return True when all letters have been guessed."""
-        return all(letter in self.guessed_letters for letter in self.solution)
+        return all(ch in self.guessed_letters for ch in self.solution if ch.isalpha())

@@ -1,14 +1,21 @@
-from sqlalchemy import create_engine, text
+import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-engine = create_engine("sqlite+pysqlite:///data/game.db", echo=True, future=True)
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///data/game.db")
+
+connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
+engine = create_engine(DATABASE_URL, connect_args=connect_args)
+SessionLocal = sessionmaker(bind=engine, autoflush=False)
 
 
-def get_connection():
-    return engine.connect()
+class Base(DeclarativeBase):
+    pass
 
 
-def execute_query(query: str, params: dict = None):
-    """Helper to execute a query with optional parameters and commit changes."""
-    with get_connection() as conn:
-        conn.execute(text(query), params or {})
-        conn.commit()
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
