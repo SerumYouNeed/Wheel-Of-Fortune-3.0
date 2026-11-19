@@ -20,9 +20,6 @@ dev = [
 [tool.setuptools.packages.find]
 where = ["src"]
 
-[project.scripts]
-wof = "app.main:main"
-
 [build-system]
 requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
