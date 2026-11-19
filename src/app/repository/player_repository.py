@@ -16,3 +16,6 @@ class PlayerRepository:
 
     def get_by_name(self, name: str) -> Player | None:
         return self.db.scalar(select(Player).where(Player.name == name))
+
+    def get_by_id(self, player_id: str) -> Player | None:
+        return self.db.get(Player, player_id)

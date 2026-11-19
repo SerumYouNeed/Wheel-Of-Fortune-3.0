@@ -30,3 +30,7 @@ class PlayerOut(BaseModel):
     id: str
     name: str
     score: int
+
+class TokenOut(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
