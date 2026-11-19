@@ -1,15 +1,17 @@
-from app.domain.puzzle import Puzzle
-from app.services.puzzle_service import PuzzleService
-from app.domain.game_state import GameState
-from app.repository.player_repository import PlayerRepository
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+
+from app.api import players
+from app.models import player  # noqa: F401  (rejestruje model w Base.metadata)
+from app.repository.db import Base, engine
 
 
-def main():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    Base.metadata.create_all(engine)
+    yield
 
-    puzzle = Puzzle("ALA MA KOTA")
-    player_repository = PlayerRepository()
-    player_repository.create_players_table()
 
-
-if __name__ == "__main__":
-    main()
+app = FastAPI(title="Wheel of Fortune", lifespan=lifespan)
+app.include_router(players.router)
