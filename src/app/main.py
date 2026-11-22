@@ -15,3 +15,5 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Wheel of Fortune", lifespan=lifespan)
 app.include_router(players.router)
+
+// model game
